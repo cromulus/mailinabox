@@ -88,6 +88,9 @@ fi
 
 hide_output add-apt-repository -y ppa:mail-in-a-box/ppa
 
+# for a modern version of php
+hide_output add-apt-repository -y ppa:ondrej/php
+
 # ### Update Packages
 
 # Update system packages to make sure we have the latest upstream versions of things from Ubuntu.
