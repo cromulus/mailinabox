@@ -16,11 +16,14 @@ fi
 # Install nginx and a PHP FastCGI daemon.
 #
 # Turn off nginx's default website.
+# explicitly installing mod-stream for dns-tls proxy
 
 echo "Installing Nginx (web server)..."
 
-apt_install nginx php7.0-cli php7.0-fpm
+apt_install nginx-full php7.0-cli php7.0-fpm libnginx-mod-stream
 
+#including nginx modules
+sed -i '1s/^/include \/etc\/nginx\/modules-enabled\/\*.conf\;\n/' /etc/nginx/nginx.conf
 # Set PHP7 as the default
 update-alternatives --set php /usr/bin/php7.0
 

@@ -127,9 +127,18 @@ apt_install python3 python3-dev python3-pip \
 
 hide_output add-apt-repository -y ppa:ondrej/php
 apt_add_repository_to_unattended_upgrades LP-PPA-ondrej-php:trusty
+
+
+# ### add Nginx Stable PPA
+# DNS-TLS proxy requires the stream module, which is only available in
+# nginx versions 1.9.0+
+# The PPA is located here https://launchpad.net/~nginx/+archive/ubuntu/stable
+# Unattended upgrades are activated for the repository
+hide_output add-apt-repository -y ppa:nginx/stable
+apt_add_repository_to_unattended_upgrades LP-PPA-nginx-stable:trusty
+
+# update after all PPA's added
 hide_output apt-get update
-
-
 # ### Suppress Upgrade Prompts
 # Since Mail-in-a-Box might jump straight to 18.04 LTS, there's no need
 # to be reminded about 16.04 on every login.
